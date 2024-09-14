@@ -10,10 +10,10 @@ use crate::img::with_extension;
 #[command(about = "Pack an image from a given directory or source ISO image")]
 pub struct PackArgs {
     #[arg(help = "Path to source directory or ISO image")]
-    source_path: String,
+    pub(crate) source_path: String,
 
     #[arg(help = "Path to output image")]
-    image_path: Option<String>,
+    pub(crate) image_path: Option<String>,
 }
 
 fn get_default_image_path(source_path: &Path, is_dir: bool) -> Result<PathBuf, anyhow::Error> {

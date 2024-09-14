@@ -3,6 +3,7 @@ use maybe_async::maybe_async;
 
 mod cmd_build_image;
 mod cmd_compress;
+mod cmd_extract_xiso;
 mod cmd_info;
 mod cmd_md5;
 mod cmd_pack;
@@ -30,6 +31,7 @@ enum Cmd {
     BuildImage(cmd_build_image::BuildImageArgs),
     ImageSpec(cmd_build_image::ImageSpecArgs),
     Compress(cmd_compress::CompressArgs),
+    ExtractXiso(cmd_extract_xiso::ExtractXisoArgs),
 }
 
 #[maybe_async]
@@ -47,6 +49,7 @@ async fn run_command(cmd: &Cmd) -> Result<(), anyhow::Error> {
         BuildImage(args) => cmd_build_image::cmd_build_image(args).await,
         ImageSpec(args) => cmd_build_image::cmd_image_spec(args).await,
         Compress(args) => cmd_compress::cmd_compress(args).await,
+        ExtractXiso(args) => cmd_extract_xiso::cmd_extract_xiso(args).await,
     }
 }
 

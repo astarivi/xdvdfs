@@ -74,10 +74,10 @@ async fn copyout_directory(
 #[command(about = "Unpack an entire image to a directory")]
 pub struct UnpackArgs {
     #[arg(help = "Path to XISO image")]
-    image_path: String,
+    pub(crate) image_path: String,
 
     #[arg(help = "Output directory")]
-    path: Option<String>,
+    pub(crate) path: Option<String>,
 }
 
 #[maybe_async]
